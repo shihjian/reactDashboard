@@ -23,10 +23,12 @@ import {
   Editor,
 } from "./pages";
 
+import { useStateContext } from "./contexts/ContextProvider";
+
 import "./App.css";
 
 const App = () => {
-  const activeMenu = true;
+  const { activeMenu } = useStateContext();
   return (
     <div>
       <BrowserRouter>
@@ -42,6 +44,7 @@ const App = () => {
               </button>
             </TooltipComponent>
           </div>
+          {/* 側邊選單  */}
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
               <Sidebar />
@@ -51,6 +54,7 @@ const App = () => {
               <Sidebar />
             </div>
           )}
+          {/* Navbar  */}
           <div
             className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${
               activeMenu ? "md:ml-72" : "flex-2"
